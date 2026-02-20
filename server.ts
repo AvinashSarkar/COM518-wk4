@@ -14,6 +14,10 @@ const db = new sqlite3.Database(dbPath, (err) => {
   else console.log("Connected to DB:", dbPath);
 });
 
+app.get("/", (req: Request, res: Response) => {
+  res.send("API running. Try /hometown/Oasis or /debug/artists");
+});
+
 // DEBUG: show artists table columns
 app.get("/debug/artists", (req: Request, res: Response) => {
   db.all("PRAGMA table_info(artists)", [], (err, rows) => {
